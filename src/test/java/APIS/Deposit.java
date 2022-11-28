@@ -17,6 +17,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class Deposit {
+    String current = System.getProperty("user.dir");
     UUID uuid = UUID.randomUUID();
     static String suuid = UUID.randomUUID().toString();
     static String adviceuuid = UUID.randomUUID().toString();
@@ -31,10 +32,10 @@ public class Deposit {
     String walletnum = "ea2bb7d5-8d7c-43f7-b1e3-6c67972959d3";
 
     @Test(priority = 0, enabled = true)
-    public void Receive_Deposit() throws IOException {
+    public void Receive_Deposit_OffUS() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/deposit/axispay-wallet-transactions/v1/wallet/" + walletNumber + "/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Receive Deposit.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Receive Deposit.json")));
         String receiveDepositRequest = jsonBody.replace("clientid", suuid)
                 .replace("walletnumber", walletNumber)
                 .replace("transactionid", suuid)
@@ -64,7 +65,7 @@ public class Deposit {
     public void Receive_Deposit_OffUs_Advice() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/deposit/axispay-wallet-transactions/v1/transaction/"+meezaTranId+"/receiveDepositAdvice";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Receive Deposit Advice.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Receive Deposit Advice.json")));
         String receiveDepositRequest = jsonBody.replace("ADVICEID", adviceuuid)
                 .replace("walletnumber", walletNumber)
                 .replace("CLIENTID",suuid)
@@ -89,10 +90,10 @@ public class Deposit {
     }
 
     @Test(priority = 2, enabled = true)
-    public void Send_Deposit() throws IOException {
+    public void Send_Deposit_OffUS() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/deposit/axispay-wallet-transactions/v1/wallet/"+walletnum+"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Send Deposit.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Send Deposit.json")));
         String receiveDepositRequest = jsonBody.replace("receiverid", receiverId)
                 .replace("TrxTimeStamp", Date);
         // @formatter:off
@@ -117,10 +118,10 @@ public class Deposit {
     }
 
     @Test(priority = 3, enabled = true)
-    public void Send_Deposit_Advice() throws IOException {
+    public void Send_Deposit_Advice_OffUs() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/deposit/axispay-wallet-transactions/v1/transaction/"+meezaTranId+"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Send Deposit Advice.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current+ "\\Json files\\Send Deposit Advice.json")));
         String receiveDepositRequest = jsonBody.replace("ADVICEID", adviceuuid)
                 .replace("receiverid", receiverId)
                 .replace("CLIENTID",suuid)

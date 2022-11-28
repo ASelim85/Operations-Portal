@@ -3,18 +3,35 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.math.BigDecimal;
+
 public class DashboardPage extends PageBase{
     public DashboardPage(WebDriver driver) {
         super(driver);
     }
+    public String BPAmount;
+    public String BPCount;
+    public String cashInAmount;
+    public String cashInCount;
 
-    public By btnProfile = By.xpath("(//button[@type='button'])[2]");
-    public By btnRewards = By.xpath("//li[contains(@data-menu-id,'rewards')]");
+    public String cashOutAmount;
+    public String cashOutCount;
+    public String depositAmount;
+    public String depositCount;
+    public String IntRimAmount;
+    public String IntRimCount;
+    public String P2MAmount;
+    public String P2MCount;
+
+    public String P2PAmount;
+    public String P2PCount;
+
+    public By btnViewDetials = By.xpath("//span[contains(@class,'ant-typography _view-details-text_617v1_54')]");
+    public By txtDashboard = By.xpath("//*[@id=\"root\"]/div/section/section/main/div/div/div[1]/div[1]/h1/b");
     public By txtVolumeValue = By.xpath("//span[contains(@class,'volume-amount')]");
     public By txtVolumetarnscations = By.xpath("//span[contains(@class,'_volume-transaction')]");
     public By txtRevenueValue = By.xpath("//span[contains(@class,'revenue-amount')]");
     public By txtRevenueTrx = By.xpath("//span[contains(@class,'_revenue-transaction')]");
-
     public By txtCashInValue = By.xpath("//span[contains(@class,'_cashin-amount')]");
     public By txtCashInTrx = By.xpath("//span[contains(@class,'_cashin-transaction')]");
     public By txtCashOutValue = By.xpath("//span[contains(@class,'_cashout-amount')]");
@@ -22,32 +39,38 @@ public class DashboardPage extends PageBase{
 
     public By txtRegisteredWallets = By.xpath("(//div[contains(@class,'_wallet-value')])[1]");
     public By txtPinSetWallets = By.xpath("(//div[contains(@class,'_wallet-value')])[2]");
-    public By txtTotalWaleltsBalance = By.xpath("(//div[contains(@class,'_wallet-value')])[3]");
+    public By txtTotalWalletsBalance = By.xpath("(//div[contains(@class,'_wallet-value')])[3]");
     public By txtQAW = By.xpath("(//div[contains(@class,'_wallet-value')])[4]");
     public By txtMAW = By.xpath("(//div[contains(@class,'_wallet-value')])[5]");
     public By txtDAW = By.xpath("(//div[contains(@class,'_wallet-value')])[6]");
     public By txtUnregisteredWallets = By.xpath("(//div[contains(@class,'_wallet-value')])[7]");
-
+    public By Value_BP = By.id("Bill Payments-ReportingType_BILL_PAYMENTS");
+    public By Value_Cashin = By.id("Cash in-ReportingType_CASH_IN");
+    public By Value_Cashout = By.id("Cash out-ReportingType_CASH_OUT");
+    public By Value_Deposit = By.id("Deposit-ReportingType_DEPOSIT");
+    public By Value_IntRim = By.id("International Remittance-ReportingType_INTERNATIONAL_REMITTANCE");
+    public By Value_P2M = By.id("P2M-ReportingType_P2M");
+    public By Value_P2P = By.id("P2P-ReportingType_P2P");
 
     public boolean isDashboardDisplayed(){
-        waitElement(btnProfile);
-        return action(btnProfile).isDisplayed();
+        waitElement(txtDashboard);
+        return action(txtDashboard).isDisplayed();
     }
 
-    public void clickRewards(){
-        waitElement(btnRewards);
-        click(btnRewards);
+    public String getDashBoardText() {
+        waitElement(txtDashboard);
+        String DashText = action(txtDashboard).getText();
+        return DashText;
     }
-
     public boolean checkVolume(){
         waitElement(txtVolumeValue);
         return action(txtVolumeValue).isDisplayed();
     }
 
-    public String getVolumePrevBalance() {
+    public String getVolumeValue() {
         waitElement(txtVolumeValue);
-        String prevBalance = action(txtVolumeValue).getText();
-        return prevBalance;
+        String VolumeValue = action(txtVolumeValue).getText().replaceAll(",","");
+        return VolumeValue;
     }
 
     public boolean checkVolumeTrx(){
@@ -66,21 +89,14 @@ public class DashboardPage extends PageBase{
         return action(txtRevenueValue).isDisplayed();
     }
 
-    public String getRevenuePrevBalance() {
+    public String getRevenueValue() {
         waitElement(txtRevenueValue);
-        String prevBalance = action(txtRevenueValue).getText();
-        return prevBalance;
+        String RevenueValue = action(txtRevenueValue).getText().replaceAll(",","");
+        return RevenueValue;
     }
-
     public boolean checkRevenueTrx(){
         waitElement(txtRevenueTrx);
         return action(txtRevenueTrx).isDisplayed();
-    }
-
-    public String getRevenuePrevTrx() {
-        waitElement(txtRevenueTrx);
-        String prevTrx = action(txtRevenueTrx).getText();
-        return prevTrx;
     }
 
     public boolean checkCheckIn(){
@@ -110,21 +126,15 @@ public class DashboardPage extends PageBase{
         return action(txtCashOutValue).isDisplayed();
     }
 
-    public String getCashOutPrevBalance() {
+    public String getCashOutValue() {
         waitElement(txtCashOutValue);
-        String prevBalance = action(txtCashOutValue).getText();
-        return prevBalance;
+        String CashOutValue = action(txtCashOutValue).getText().replaceAll(",","");;
+        return CashOutValue;
     }
 
     public boolean checkCashOutTrx(){
         waitElement(txtCashOutTrx);
         return action(txtCashOutTrx).isDisplayed();
-    }
-
-    public String getCashOutPrevTrx() {
-        waitElement(txtCashOutTrx);
-        String prevTrx = action(txtCashOutTrx).getText();
-        return prevTrx;
     }
 
     public boolean checkRegisteredWalletsTrx(){
@@ -150,14 +160,14 @@ public class DashboardPage extends PageBase{
     }
 
     public boolean checkTotalWalletsBalance(){
-        waitElement(txtTotalWaleltsBalance);
-        return action(txtTotalWaleltsBalance).isDisplayed();
+        waitElement(txtTotalWalletsBalance);
+        return action(txtTotalWalletsBalance).isDisplayed();
     }
 
-    public String getTotalWalletsPrevBalance() {
-        waitElement(txtTotalWaleltsBalance);
-        String prevTrx = action(txtTotalWaleltsBalance).getText();
-        return prevTrx;
+    public String getTotalWalletsBalance() {
+        waitElement(txtTotalWalletsBalance);
+        String TotalWalletsBalance = action(txtTotalWalletsBalance).getText().replaceAll(",", "").replaceAll("EGP","");
+        return TotalWalletsBalance;
     }
 
     public boolean checkQAW(){
@@ -203,4 +213,64 @@ public class DashboardPage extends PageBase{
         String prevTrx = action(txtUnregisteredWallets).getText();
         return prevTrx;
     }
+
+    public void cLickViewDetials() {
+        waitElement(btnViewDetials);
+        click(btnViewDetials);
+    }
+    public String[] get_BPValue(){
+        waitElement(Value_BP);
+        String[] BPlines = action(Value_BP).getText().replaceAll("TXNS","").split(" ");
+        BPAmount = BPlines[0];
+        BPCount = BPlines[1];
+        return new String[] {BPAmount, BPCount};
+    }
+
+    public String[] get_CashinValue(){
+        waitElement(Value_Cashin);
+        String[] cashInLines = action(Value_Cashin).getText().replaceAll("TXNS","").split(" ");
+        cashInAmount = cashInLines[0]; // 004
+        cashInCount = cashInLines[1];
+        return new String[] {cashInAmount, cashInCount};
+    }
+
+    public String[] get_CashoutValue(){
+        waitElement(Value_Cashout);
+        String[] cashOutLines = action(Value_Cashout).getText().replaceAll("TXNS","").split(" ");
+        cashOutAmount = cashOutLines[0]; // 004
+        cashOutCount = cashOutLines[1];
+        return new String[] {cashOutAmount, cashOutCount};
+    }
+
+    public String[] get_DepositValue(){
+        waitElement(Value_Deposit);
+        String[] depositLines = action(Value_Deposit).getText().replaceAll("TXNS","").split(" ");
+        depositAmount = depositLines[0]; // 004
+        depositCount = depositLines[1];
+        return new String[] {depositAmount, depositCount};
+    }
+
+    public String[] get_IntRemittanceValue(){
+        waitElement(Value_IntRim);
+        String[] intRimLines = action(Value_IntRim).getText().replaceAll("TXNS","").split(" ");
+        IntRimAmount = intRimLines[0]; // 004
+        IntRimCount = intRimLines[1];
+        return new String[] {IntRimAmount, IntRimCount};
+    }
+    public String[] get_P2MValue(){
+        waitElement(Value_P2M);
+        String[] intRimLines = action(Value_P2M).getText().replaceAll("TXNS","").split(" ");
+        P2MAmount = intRimLines[0]; // 004
+        P2MCount = intRimLines[1];
+        return new String[] {P2MAmount, P2MCount};
+    }
+
+    public String[] get_P2PValue(){
+        waitElement(Value_P2P);
+        String[] intRimLines = action(Value_P2P).getText().replaceAll("TXNS","").split(" ");
+        P2PAmount = intRimLines[0]; // 004
+        P2PCount = intRimLines[1];
+        return new String[] {P2PAmount, P2PCount};
+    }
+
 }

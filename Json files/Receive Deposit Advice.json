@@ -5,7 +5,7 @@
    "description": "Receive Payroll",
   "interchangeAction": "CREDIT",
   "interchangeCurrency": "EGP",
-  "interchangeValue": 3.5,
+  "interchangeValue": 1,
   "orderingAgencyAddress": "string",
   "orderingAgencyCountry": "string",
   "orderingAgencyName": "string",
@@ -26,5 +26,5 @@
   "transactionCurrency": "EGP",
   "transactionReference": "123",
   "transactionTimestamp": "TrxTimeStamp",
-  "transactionValue": 200
+  "transactionValue": 10
 }

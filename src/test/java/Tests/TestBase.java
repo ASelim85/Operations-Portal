@@ -4,38 +4,38 @@ import APIS.P2P;
 import Pages.*;
 import com.google.common.collect.ImmutableMap;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.ConfigurationBuilder;
-import io.qameta.allure.Extension;
-import io.qameta.allure.ReportGenerator;
-import io.qameta.allure.allure1.Allure1Plugin;
-import io.qameta.allure.allure2.Allure2Plugin;
-import io.qameta.allure.category.CategoriesPlugin;
-import io.qameta.allure.category.CategoriesTrendPlugin;
-import io.qameta.allure.context.FreemarkerContext;
-import io.qameta.allure.context.JacksonContext;
-import io.qameta.allure.context.MarkdownContext;
-import io.qameta.allure.context.RandomUidContext;
-import io.qameta.allure.core.*;
-import io.qameta.allure.duration.DurationPlugin;
-import io.qameta.allure.duration.DurationTrendPlugin;
-import io.qameta.allure.environment.Allure1EnvironmentPlugin;
-import io.qameta.allure.executor.ExecutorPlugin;
-import io.qameta.allure.history.HistoryPlugin;
-import io.qameta.allure.history.HistoryTrendPlugin;
-import io.qameta.allure.idea.IdeaLinksPlugin;
-import io.qameta.allure.influxdb.InfluxDbExportPlugin;
-import io.qameta.allure.launch.LaunchPlugin;
-import io.qameta.allure.mail.MailPlugin;
-import io.qameta.allure.owner.OwnerPlugin;
-import io.qameta.allure.prometheus.PrometheusExportPlugin;
-import io.qameta.allure.retry.RetryPlugin;
-import io.qameta.allure.retry.RetryTrendPlugin;
-import io.qameta.allure.severity.SeverityPlugin;
-import io.qameta.allure.status.StatusChartPlugin;
-import io.qameta.allure.suites.SuitesPlugin;
-import io.qameta.allure.summary.SummaryPlugin;
-import io.qameta.allure.tags.TagsPlugin;
-import io.qameta.allure.timeline.TimelinePlugin;
+//import io.qameta.allure.ConfigurationBuilder;
+//import io.qameta.allure.Extension;
+//import io.qameta.allure.ReportGenerator;
+//import io.qameta.allure.allure1.Allure1Plugin;
+//import io.qameta.allure.allure2.Allure2Plugin;
+//import io.qameta.allure.category.CategoriesPlugin;
+//import io.qameta.allure.category.CategoriesTrendPlugin;
+//import io.qameta.allure.context.FreemarkerContext;
+//import io.qameta.allure.context.JacksonContext;
+//import io.qameta.allure.context.MarkdownContext;
+//import io.qameta.allure.context.RandomUidContext;
+//import io.qameta.allure.core.*;
+//import io.qameta.allure.duration.DurationPlugin;
+//import io.qameta.allure.duration.DurationTrendPlugin;
+//import io.qameta.allure.environment.Allure1EnvironmentPlugin;
+//import io.qameta.allure.executor.ExecutorPlugin;
+//import io.qameta.allure.history.HistoryPlugin;
+//import io.qameta.allure.history.HistoryTrendPlugin;
+//import io.qameta.allure.idea.IdeaLinksPlugin;
+//import io.qameta.allure.influxdb.InfluxDbExportPlugin;
+//import io.qameta.allure.launch.LaunchPlugin;
+//import io.qameta.allure.mail.MailPlugin;
+//import io.qameta.allure.owner.OwnerPlugin;
+//import io.qameta.allure.prometheus.PrometheusExportPlugin;
+//import io.qameta.allure.retry.RetryPlugin;
+//import io.qameta.allure.retry.RetryTrendPlugin;
+//import io.qameta.allure.severity.SeverityPlugin;
+//import io.qameta.allure.status.StatusChartPlugin;
+//import io.qameta.allure.suites.SuitesPlugin;
+//import io.qameta.allure.summary.SummaryPlugin;
+//import io.qameta.allure.tags.TagsPlugin;
+//import io.qameta.allure.timeline.TimelinePlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,26 +53,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
+//import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 public class TestBase {
     WebDriver driver;
     LoginPage loginPage;
     DashboardPage dashboardPage;
-
     MeezaReportPage meezaReportPage;
-
+    Login login;
     private final String url = "https://bankportalsit.axispay.app:444/";
 
     @BeforeSuite
     void setEnvironment() {
-        allureEnvironmentWriter(
-                ImmutableMap.<String, String>builder()
-                        .put("Browser", "Chrome")
-                        .put("Browser.Version", "97.0.4692.71")
-                        .put("URL", url)
-                        .build(), System.getProperty("user.dir")
-                        + "/allure-results/");
+//        allureEnvironmentWriter(
+//                ImmutableMap.<String, String>builder()
+//                        .put("Browser", "Chrome")
+//                        .put("Browser.Version", "97.0.4692.71")
+//                        .put("URL", url)
+//                        .build(), System.getProperty("user.dir")
+//                        + "/allure-results/");
     }
 
     @BeforeMethod
@@ -86,6 +85,7 @@ public class TestBase {
             loginPage = new LoginPage(driver);
             dashboardPage = new DashboardPage(driver);
             meezaReportPage = new MeezaReportPage(driver);
+            login = new Login();
             P2P p2p = new P2P();
         } else if(browserName.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
@@ -101,7 +101,7 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
     @AfterClass

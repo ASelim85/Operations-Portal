@@ -2,6 +2,6 @@
   "mPin": "mpin",
   "receiverMsisdn": "00201302546622",
   "requestTimestamp": "TrxTimeStamp",
-  "transactionAmount": 20,
+  "transactionAmount": 10,
   "transactionCurrency": "EGP"
 }
