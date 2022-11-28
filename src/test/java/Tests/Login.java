@@ -8,14 +8,15 @@ import java.io.IOException;
 
 public class Login extends TestBase {
 
-
-    @Test
+    @Test (priority = 0, enabled = true)
     public void LoginWithValid() throws IOException {
-        loginPage.setUsername(ExcelFileManager.setDataFromExcelFile(0, 1));
-        loginPage.setPassword(ExcelFileManager.setDataFromExcelFile(1, 1));
+        loginPage.setUsername("Bankuser");
+        loginPage.setPassword("P@ssw0rd");
         loginPage.clickSignIn();
-        loginPage.setOTP(ExcelFileManager.setDataFromExcelFile(2, 1));
+        loginPage.setOTP("245345");
         loginPage.clickVerifyOTP();
         Assert.assertTrue(dashboardPage.isDashboardDisplayed());
+        String test = dashboardPage.getDashBoardText();
+        Assert.assertEquals(test, "Dashboard");
     }
 }

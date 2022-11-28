@@ -1,5 +1,5 @@
 {
-  "depositAmount": 100,
+  "depositAmount": 10,
   "depositCurrency": "EGP",
   "description": "AxisPay Payroll",
   "mPin": "123457",

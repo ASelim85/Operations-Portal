@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.math.BigDecimal;
+
 public class MeezaReportPage extends PageBase{
     public MeezaReportPage(WebDriver driver) {
         super(driver);
@@ -37,76 +39,89 @@ public class MeezaReportPage extends PageBase{
         click(btnValues);
     }
 
-    public String getTransactionPrevTrx(){
+    public BigDecimal volume_GetTransaction(){
         waitElement(trxTransactions);
-        String prevTransactionValue = action(trxTransactions).getText();
-        return prevTransactionValue;
+        String TransactionValue = action(trxTransactions).getText().replaceAll(",", "");
+        BigDecimal finalTransactionValueBeforeTrx = new BigDecimal(TransactionValue);
+        return finalTransactionValueBeforeTrx;
     }
 
-    public String getInterchangeDebitPrevTrx(){
+    public BigDecimal volume_GetInterchangeDebit(){
         waitElement(trxInterchangeDebit);
-        String prevInterchangeDebitValue = action(trxInterchangeDebit).getText();
-        return prevInterchangeDebitValue;
+        String InterchangeDebitVolume = action(trxInterchangeDebit).getText().replaceAll(",", "");
+        BigDecimal decimalInterchangeDebitVolume = new BigDecimal(InterchangeDebitVolume);
+        return decimalInterchangeDebitVolume;
     }
 
-    public String getTotalDebitTrx(){
+    public BigDecimal volume_GetTotalDebit(){
         waitElement(trxTotalDebit);
-        String prevTotalDebitValue = action(trxTotalDebit).getText();
-        return prevTotalDebitValue;
+        String TotalDebitVolume = action(trxTotalDebit).getText().replaceAll(",","");
+        BigDecimal decimalTotalDebitVolume = new BigDecimal(TotalDebitVolume);
+        return decimalTotalDebitVolume;
     }
 
-    public String getInterchangeCreditTrx(){
+    public BigDecimal volume_GetInterchangeCredit(){
         waitElement(trxInterchangeCredit);
-        String prevInterchangeCreditValue = action(trxInterchangeCredit).getText();
-        return prevInterchangeCreditValue;
+        String InterchangeCreditVolume = action(trxInterchangeCredit).getText().replaceAll(",","");
+        BigDecimal decimalInterchangeCreditVolume = new BigDecimal(InterchangeCreditVolume);
+        return decimalInterchangeCreditVolume;
     }
 
-    public String getTotalCreditPrevTrx(){
+    public BigDecimal volume_GetTotalCredit(){
         waitElement(trxTotalCredit);
-        String prevTotalCreditValue = action(trxTotalCredit).getText();
-        return prevTotalCreditValue;
+        String TotalCreditVolume = action(trxTotalCredit).getText().replaceAll(",","");
+        BigDecimal decimalCreditVolume = new BigDecimal(TotalCreditVolume);
+        return decimalCreditVolume;
     }
 
-    public String getTransactionPrevValue(){
+
+
+    public BigDecimal Value_GetTransactionValue(){
         waitElement(valTransactions);
-        String prevTransactionValue = action(valTransactions).getText();
-        return prevTransactionValue;
+        String TotalTransactionsValue = action(trxTotalCredit).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalTotalTransactionsValue = new BigDecimal(TotalTransactionsValue);
+        return decimalTotalTransactionsValue;
     }
 
-    public String getInterchangeDebitPrevValue(){
+    public BigDecimal Value_GetInterchangeDebit(){
         waitElement(valInterchangeDebit);
-        String prevInterchangeDebitValue = action(valInterchangeDebit).getText();
-        return prevInterchangeDebitValue;
+        String InterchangeDebitValue = action(valInterchangeDebit).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalInterchangeDebitValue = new BigDecimal(InterchangeDebitValue);
+        return decimalInterchangeDebitValue;
     }
 
-    public String getTotalDebitValue(){
+    public BigDecimal value_getTotalDebit(){
         waitElement(valTotalDebit);
-        String prevTotalDebitValue = action(valTotalDebit).getText();
-        return prevTotalDebitValue;
+        String TotalDebitValue = action(valTotalDebit).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalTotalDebitValue = new BigDecimal(TotalDebitValue);
+        return decimalTotalDebitValue;
     }
 
-    public String getInterchangeCreditValue(){
+    public BigDecimal value_GetInterchangeCredit(){
         waitElement(valInterchangeCredit);
-        String prevInterchangeCreditValue = action(valInterchangeCredit).getText();
-        return prevInterchangeCreditValue;
+        String InterchangeCreditValue = action(valInterchangeCredit).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalInterchangeCreditValue = new BigDecimal(InterchangeCreditValue);
+        return decimalInterchangeCreditValue;
     }
 
-    public String getTotalCreditPrevValue(){
+    public BigDecimal value_GetTotalCredit(){
         waitElement(valTotalCredit);
-        String prevTotalCreditValue = action(valTotalCredit).getText();
-        return prevTotalCreditValue;
+        String TotalCreditValue = action(valTotalCredit).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalTotalCreditValue = new BigDecimal(TotalCreditValue);
+        return decimalTotalCreditValue;
     }
 
-    public String getProcessingFeesPrevValue(){
+    public BigDecimal value_GetProcessingFees(){
         waitElement(valProcessingFees);
-        String prevTotalProcessingFees = action(valProcessingFees).getText();
-        return prevTotalProcessingFees;
+        String TotalProcessingFees = action(valProcessingFees).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalTotalProcessingFees = new BigDecimal(TotalProcessingFees);
+        return decimalTotalProcessingFees;
     }
 
-    public String getNetPositionPrevValue(){
+    public BigDecimal value_GetNetPosition(){
         waitElement(valNetPosition);
-        String prevNetPosition = action(valNetPosition).getText();
-        return prevNetPosition;
+        String TotalNetPosition = action(valNetPosition).getText().replaceAll("EGP","").replaceAll(",","");
+        BigDecimal decimalTotalNetPosition = new BigDecimal(TotalNetPosition);
+        return decimalTotalNetPosition;
     }
-
 }

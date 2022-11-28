@@ -12,10 +12,12 @@ public class LoginPage extends PageBase{
     public By txtPassword = By.id("password");
     public By btnSignIn = By.xpath("//button[@type='submit']");
 
+
     public By txtOTP = By.id("basic_otp");
     public By btnVerifyOTP = By.xpath("//button[@type='submit']");
 
-    public void setUsername(String username){
+    public void setUsername(String username)
+    {
         setText(txtUsername, username);
     }
 

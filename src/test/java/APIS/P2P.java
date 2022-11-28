@@ -26,15 +26,18 @@ public class P2P {
     String walletNumber = "00201110693883";
     String walletno = "00201302546622";
     String meezaTranId;
-    String mpin = "123456";
+    String mpin = "111111";
     String walletnum = "56d38b5d-26bc-4811-b089-c3539afbf2ff";
+    String walletID = "a3e3daa7-b7f8-45f5-a7ac-fbb61608544b";
+    String current = System.getProperty("user.dir");
 
     @SuppressWarnings("unchecked")
     @Test(priority = 0, enabled = true)
-    public void Receieve_P2P() throws IOException {
+    public void Receieve_P2P_OffUs() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/p2p/axispay-wallet-transactions/v1/wallet/"+ walletNumber +"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Receive P2P.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Receive P2P.json")));
+        System.out.println(current);
         String receivep2pRequest = jsonBody.replace("clientid", suuid)
                 .replace("walletnumber", walletNumber)
                 .replace("transactionid",suuid)
@@ -65,7 +68,7 @@ public class P2P {
     public void Receieve_P2P_OffUs_Advice() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/p2p/axispay-wallet-transactions/v1/transaction/"+meezaTranId+"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Receive P2P Advice.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Receive P2P Advice.json")));
         String receivep2pRequest = jsonBody.replace("ADVICEID", suuid)
                 .replace("walletnumber", walletNumber)
                 .replace("CLIENTID",suuid)
@@ -89,10 +92,10 @@ public class P2P {
     }
 
     @Test(priority = 2, enabled = true)
-    public void Send_P2P() throws IOException {
+    public void Send_P2P_OffUs() throws IOException {
         JSONObject request = new JSONObject();
-        baseURI = "https://apisit.axispay.app:444/p2p/axispay-wallet-transactions/v1/wallet/"+ walletnum +"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Send P2P.json")));
+        baseURI = "https://apisit.axispay.app:444/p2p/axispay-wallet-transactions/v1/wallet/"+ walletID +"/";
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Send P2P.json")));
         String sendp2pRequest = jsonBody.replace("mpin", mpin)
                 .replace("TrxTimeStamp",Date);
         // @formatter:off
@@ -120,7 +123,7 @@ public class P2P {
     public void Send_P2P_OffUs_Advice() throws IOException {
         JSONObject request = new JSONObject();
         baseURI = "https://apisit.axispay.app:444/p2p/axispay-wallet-transactions/v1/transaction/"+meezaTranId+"/";
-        String jsonBody = new String(Files.readAllBytes(Paths.get("C:\\Users\\bezzat\\IdeaProjects\\AxisPayWebAutomationBank\\Json files\\Send P2P Advice.json")));
+        String jsonBody = new String(Files.readAllBytes(Paths.get(current + "\\Json files\\Send P2P Advice.json")));
         String receivep2pRequest = jsonBody.replace("ADVICEID", suuid)
                 .replace("walletnumber", walletno)
                 .replace("CLIENTID",suuid)

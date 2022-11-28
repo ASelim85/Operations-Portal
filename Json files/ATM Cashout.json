@@ -7,7 +7,7 @@
   "interchangeAction": "DEBIT",
   "interchangeCurrency": "EGP",
   "interchangeValue": 1,
-  "meezaTransactionId": "meezatransactionid",
+  "meezaTransactionId": "MezzaTrxID",
   "senderScheme": "AxisPay",
   "senderId":"walletnumber",
   "transactionCurrency": "EGP",
@@ -16,3 +16,5 @@
   "transactionTimestamp": "TrxTimeStamp",
   "transactionValue": 10
 }
+
+
