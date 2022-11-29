@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class LoginTestCases extends TestBase {
-
+    String Username = "selim";
     @Test //(priority = 0, enabled = true)
     public void LoginWithValidCredentials() throws IOException {
-        loginPage.setUsername("Bankuser");
+        loginPage.setUsername(Username);
         loginPage.setPassword("P@ssw0rd");
         loginPage.clickSignIn();
         loginPage.setOTP("245345");
