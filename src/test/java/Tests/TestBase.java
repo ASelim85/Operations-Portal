@@ -60,7 +60,8 @@ public class TestBase {
     LoginPage loginPage;
     DashboardPage dashboardPage;
     MeezaReportPage meezaReportPage;
-    Login login;
+    LoginTestCases login;
+    P2P p2p;
     private final String url = "https://bankportalsit.axispay.app:444/";
 
     @BeforeSuite
@@ -77,25 +78,15 @@ public class TestBase {
     @BeforeMethod
     public void setUp() {
         String browserName = "chrome";
-        if(browserName.equalsIgnoreCase("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.navigate().to(url);
-            loginPage = new LoginPage(driver);
-            dashboardPage = new DashboardPage(driver);
-            meezaReportPage = new MeezaReportPage(driver);
-            login = new Login();
-            P2P p2p = new P2P();
-        } else if(browserName.equalsIgnoreCase("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-            driver.manage().window().maximize();
-            driver.navigate().to(url);
-            loginPage = new LoginPage(driver);
-            dashboardPage = new DashboardPage(driver);
-            meezaReportPage = new MeezaReportPage(driver);
-        }
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.navigate().to(url);
+        loginPage = new LoginPage(driver);
+        dashboardPage = new DashboardPage(driver);
+        meezaReportPage = new MeezaReportPage(driver);
+        login = new LoginTestCases();
+        p2p = new P2P();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 
