@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Login extends TestBase {
+public class LoginTestSuite extends TestBase {
 
     @Test //(priority = 0, enabled = true)
     public void LoginWithValidCredentials() throws IOException {
