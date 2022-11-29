@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class LoginTestCases extends TestBase {
-    String Username = "selim";
+    String Username = "Bankuser";
     @Test //(priority = 0, enabled = true)
     public void LoginWithValidCredentials() throws IOException {
         loginPage.setUsername(Username);
