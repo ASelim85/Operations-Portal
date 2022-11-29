@@ -1,6 +1,5 @@
 package Tests;
 
-import Utils.ExcelFileManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,8 +7,8 @@ import java.io.IOException;
 
 public class Login extends TestBase {
 
-    @Test (priority = 0, enabled = true)
-    public void LoginWithValid() throws IOException {
+    @Test //(priority = 0, enabled = true)
+    public void LoginWithValidCredentials() throws IOException {
         loginPage.setUsername("Bankuser");
         loginPage.setPassword("P@ssw0rd");
         loginPage.clickSignIn();
