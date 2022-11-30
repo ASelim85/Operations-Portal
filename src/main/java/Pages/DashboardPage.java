@@ -36,7 +36,6 @@ public class DashboardPage extends PageBase{
     public By txtCashInTrx = By.xpath("//span[contains(@class,'_cashin-transaction')]");
     public By txtCashOutValue = By.xpath("//span[contains(@class,'_cashout-amount')]");
     public By txtCashOutTrx = By.xpath("//span[contains(@class,'_cashout-transaction')]");
-
     public By txtRegisteredWallets = By.xpath("(//div[contains(@class,'_wallet-value')])[1]");
     public By txtPinSetWallets = By.xpath("(//div[contains(@class,'_wallet-value')])[2]");
     public By txtTotalWalletsBalance = By.xpath("(//div[contains(@class,'_wallet-value')])[3]");
