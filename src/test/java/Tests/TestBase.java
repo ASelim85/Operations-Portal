@@ -62,6 +62,8 @@ public class TestBase {
     MeezaReportPage meezaReportPage;
     LoginTestCases login;
     P2P p2p;
+
+    WalletProcessPage walletProcessPage;
     private final String url = "https://bankportalsit.axispay.app:444/";
 
     @BeforeSuite
@@ -87,6 +89,7 @@ public class TestBase {
         meezaReportPage = new MeezaReportPage(driver);
         login = new LoginTestCases();
         p2p = new P2P();
+        walletProcessPage = new WalletProcessPage();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 
