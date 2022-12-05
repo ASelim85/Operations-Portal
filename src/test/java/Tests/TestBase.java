@@ -2,7 +2,6 @@ package Tests;
 
 import APIS.P2P;
 import Pages.*;
-import com.google.common.collect.ImmutableMap;
 import io.github.bonigarcia.wdm.WebDriverManager;
 //import io.qameta.allure.ConfigurationBuilder;
 //import io.qameta.allure.Extension;
@@ -39,19 +38,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import io.restassured.RestAssured;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 //import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
@@ -60,10 +54,9 @@ public class TestBase {
     LoginPage loginPage;
     DashboardPage dashboardPage;
     MeezaReportPage meezaReportPage;
-    LoginTestCases login;
+    loginTestCases login;
     P2P p2p;
-
-    WalletProcessPage walletProcessPage;
+    WalletProcessPage wallProPage;
     private final String url = "https://bankportalsit.axispay.app:444/";
 
     @BeforeSuite
@@ -87,9 +80,9 @@ public class TestBase {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         meezaReportPage = new MeezaReportPage(driver);
-        login = new LoginTestCases();
+        login = new loginTestCases();
         p2p = new P2P();
-        walletProcessPage = new WalletProcessPage();
+        wallProPage = new WalletProcessPage(driver);
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 
