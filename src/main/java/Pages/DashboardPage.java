@@ -271,5 +271,4 @@ public class DashboardPage extends PageBase{
         P2PCount = intRimLines[1];
         return new String[] {P2PAmount, P2PCount};
     }
-
 }

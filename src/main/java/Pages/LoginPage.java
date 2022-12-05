@@ -11,7 +11,7 @@ public class LoginPage extends PageBase{
     public By txtUsername = By.id("login");
     public By txtPassword = By.id("password");
     public By btnSignIn = By.xpath("//button[@type='submit']");
-
+    public By ErrorMSG = By.xpath("/html/body/div[2]/div/div/div/div/div/div[1]");
 
     public By txtOTP = By.id("basic_otp");
     public By btnVerifyOTP = By.xpath("//button[@type='submit']");
@@ -29,6 +29,9 @@ public class LoginPage extends PageBase{
         click(btnSignIn);
     }
 
+    public void GetErrorMSG(){
+        getContent(ErrorMSG);
+    }
     public void setOTP(String otp){
         setText(txtOTP, otp);
     }

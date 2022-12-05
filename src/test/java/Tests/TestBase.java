@@ -91,9 +91,9 @@ public class TestBase {
     }
 
     @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+//    public void tearDown() {
+//        driver.quit();
+//    }
 
     @AfterClass
     public void generateReport() throws IOException {
