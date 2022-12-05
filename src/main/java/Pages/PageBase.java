@@ -17,7 +17,7 @@ public class PageBase {
     static WebDriver driver;
 
     public PageBase(WebDriver driver) {
-        this.driver = driver;
+        PageBase.driver = driver;
     }
 
     protected static WebElement action(By locator) {
