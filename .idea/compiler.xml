@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AxisPayWebAutomationBank" />
         <module name="Bank-Portal" />
+        <module name="Agent-Portal" />
+        <module name="AxisPayWebAutomationBank" />
         <module name="AxisPayOperation" />
       </profile>
     </annotationProcessing>

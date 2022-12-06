@@ -44,20 +44,20 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import ru.yandex.qatools.allure.report.AllureReportBuilder;
+import ru.yandex.qatools.allure.report.AllureReportBuilderException;
 
 import java.util.ArrayList;
 
-//import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
+//import static com.github.automated-owl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 public class TestBase {
     WebDriver driver;
     LoginPage loginPage;
     DashboardPage dashboardPage;
-    MeezaReportPage meezaReportPage;
     loginTestCases login;
     P2P p2p;
     WalletProcessPage wallProPage;
-    private final String url = "https://bankportalsit.axispay.app:444/";
 
     @BeforeSuite
     void setEnvironment() {
@@ -71,19 +71,21 @@ public class TestBase {
     }
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp() throws AllureReportBuilderException {
         String browserName = "chrome";
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        String url = "https://agentportalsit.axispay.app:444/";
         driver.navigate().to(url);
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
-        meezaReportPage = new MeezaReportPage(driver);
         login = new loginTestCases();
         p2p = new P2P();
         wallProPage = new WalletProcessPage(driver);
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+//        new AllureReportBuilder("1.5.4", new File("build/allure-report")).unpackFace();
+//        new AllureReportBuilder("1.5.4", new File("build/allure-report")).processResults(new File("build/allure-results"));
     }
 
     @AfterMethod
@@ -94,8 +96,7 @@ public class TestBase {
     @AfterClass
     public void generateReport() throws IOException {
         //onGenerateAllureReport();
-        FileUtils.deleteDirectory(new File("target/allure-results"
-        ));
+        FileUtils.deleteDirectory(new File("target/allure-results"));
     }
 
     public void switchTab() {
@@ -106,6 +107,8 @@ public class TestBase {
     public void refresh() {
         driver.navigate().refresh();
     }
+
+
 
 //    private void onGenerateAllureReport() {
 //        Runtime.getRuntime().addShutdownHook(new Thread() {
