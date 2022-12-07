@@ -27,7 +27,7 @@ public class DashboardPage extends PageBase{
     public String P2PCount;
 
     public By btnViewDetials = By.xpath("//span[contains(@class,'ant-typography _view-details-text_617v1_54')]");
-    public static By txtDashboardTitle = By.xpath("//*[@id=\"root\"]/div/section/section/main/div/h1");
+    public static By txtDashboardTitle = By.xpath("//*[@id=\"root\"]/div/section/section/main/div/div/div[1]/h1");
     public static By txtVolumeValue = By.xpath("//span[contains(@class,'volume-amount')]");
     public By txtVolumetarnscations = By.xpath("//span[contains(@class,'_volume-transaction')]");
     public By txtRevenueValue = By.xpath("//span[contains(@class,'revenue-amount')]");
