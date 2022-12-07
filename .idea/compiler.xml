@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Bank-Portal" />
         <module name="Agent-Portal" />
+        <module name="Operations-Portal" />
         <module name="AxisPayWebAutomationBank" />
         <module name="AxisPayOperation" />
       </profile>

@@ -76,7 +76,7 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        String url = "https://agentportalsit.axispay.app:444/";
+        String url = "https://opsportalsit.axispay.app:444/";
         driver.navigate().to(url);
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);

@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class loginTestCases extends TestBase {
-    static String Username = "agentuser5";
+    static String Username = "selim";
     static String Password = "P@ssw0rd";
 
     @Test(priority = 0, enabled = true)
