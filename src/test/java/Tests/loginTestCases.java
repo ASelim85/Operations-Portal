@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 public class loginTestCases extends TestBase {
     static String Username = "selim";
     static String Password = "P@ssw0rd";
-
-    @Test(priority = 0, enabled = false)
+    
+    @Test(priority = 0, enabled = true)
 
     public static void LoginWithValidCredentials() {
         LoginPage.setUsername(Username);
