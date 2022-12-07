@@ -8,8 +8,9 @@ import org.testng.annotations.Test;
 public class loginTestCases extends TestBase {
     static String Username = "selim";
     static String Password = "P@ssw0rd";
-    //Amira
+    
     @Test(priority = 0, enabled = true)
+
     public static void LoginWithValidCredentials() {
         LoginPage.setUsername(Username);
         LoginPage.setPassword(Password);
@@ -20,7 +21,7 @@ public class loginTestCases extends TestBase {
         Assert.assertEquals(DashboardPage.getDashBoardText(), "Dashboard");
     }
 
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1, enabled = true)
     public void LoginWithInValidCredentials() {
         LoginPage.setUsername(Username);
         LoginPage.setPassword("P@ssw0rd1");
