@@ -9,7 +9,7 @@ public class loginTestCases extends TestBase {
     static String Username = "selim";
     static String Password = "P@ssw0rd";
     
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 0, enabled = false)
 
     public static void LoginWithValidCredentials() {
         LoginPage.setUsername(Username);
@@ -21,7 +21,7 @@ public class loginTestCases extends TestBase {
         Assert.assertEquals(DashboardPage.getDashBoardText(), "Dashboard");
     }
 
-    @Test(priority = 2, enabled = false)
+    @Test(priority = 1, enabled = false)
     public void LoginWithInValidCredentials() {
         LoginPage.setUsername(Username);
         LoginPage.setPassword("P@ssw0rd1");
