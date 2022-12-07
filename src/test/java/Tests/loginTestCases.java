@@ -29,4 +29,12 @@ public class loginTestCases extends TestBase {
         LoginPage.GetErrorMSG();
         Assert.assertEquals(LoginPage.GetErrorMSG(), "Invalid Login");
     }
+    @Test(priority = 1, enabled = false)
+    public void LoginWithEmptyCredentials() {
+        LoginPage.setUsername("");
+        LoginPage.setPassword("");
+        LoginPage.clickSignIn();
+        LoginPage.GetErrorMSG();
+        Assert.assertEquals(LoginPage.GetErrorMSG(), "Invalid Login");
+    }
 }
