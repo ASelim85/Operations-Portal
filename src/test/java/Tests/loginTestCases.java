@@ -20,7 +20,7 @@ public class loginTestCases extends TestBase {
         Assert.assertEquals(DashboardPage.getDashBoardText(), "Dashboard");
     }
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1, enabled = false)
     public void LoginWithInValidCredentials() {
         LoginPage.setUsername(Username);
         LoginPage.setPassword("P@ssw0rd1");
